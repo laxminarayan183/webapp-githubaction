@@ -38,6 +38,7 @@ jobs:
       run: aws s3 sync . s3://bucket-name --delete
    
  ```
-# Step 5 : Give permission to S3 bucket to public access using bucket policy
-# Step 6 : In S3 enable static website hosting
-# Step 7 : Copy S3 url and paste in browser to test
+# Step 5 : Setup environment variable for current repo to access aws credentials - settings - secret and varicbles - actions
+# Step 6 : Give permission to S3 bucket to public access using bucket policy
+# Step 7 : In S3 enable static website hosting
+# Step 8 : Copy S3 url and paste in browser to test
