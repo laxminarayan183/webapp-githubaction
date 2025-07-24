@@ -1,16 +1,16 @@
 # Deploying Application Using Github Action
 
-# Requirements
+## Requirements
 - index.html file
 - aws IAM role for S3 Full access
 - github action yaml file
 
-# Step 1 : Create a web app Repo
-# Step 2 : Go to aws create user using IAM and assign s3 full access
-# Step 3 : Go to github action set up workflow yourself
-# Step 4 : Create yml file here for access aws
+### Step 1 : Create a web app Repo
+### Step 2 : Go to aws create user using IAM and assign s3 full access
+### Step 3 : Go to github action set up workflow yourself
+### Step 4 : Create yml file here for access aws
 
-# yml file
+### yml file
 
 ```
 name: Portfolio Deployment
@@ -38,7 +38,22 @@ jobs:
       run: aws s3 sync . s3://bucket-name --delete
    
  ```
-# Step 5 : Setup environment variable for current repo to access aws credentials - settings - secret and varicbles - actions
-# Step 6 : Give permission to S3 bucket to public access using bucket policy
-# Step 7 : In S3 enable static website hosting
-# Step 8 : Copy S3 url and paste in browser to test
+### Step 5 : Setup environment variable for current repo to access aws credentials - settings - secret and varicbles - actions
+### Step 6 : In S3 bucket permission edit Block public access - uncheck 
+### Step 7 : Give permission to S3 bucket to public access using bucket policy - 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+```
+### Step 8 : In S3 enable static website hosting with index.html
+### Step 9 : Copy S3 url and paste in browser to test
